@@ -9,7 +9,16 @@ export default function todoReducer(state, action) {
   switch (type) {
     case ADD:
       return {
-        todos: [...todos, payload],
+        todos: [
+          ...todos,
+          {
+            id: nextId,
+            title: payload.title,
+            category: payload.category,
+            priority: payload.priority,
+            completedStatus: false,
+          },
+        ],
         nextId: nextId + 1,
       };
 

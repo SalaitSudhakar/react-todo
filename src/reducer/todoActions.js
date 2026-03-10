@@ -2,21 +2,13 @@ import ACTIONS from "./actionTypes";
 
 const { ADD, EDIT, REMOVE, TOGGLE } = ACTIONS;
 
-export function addTodo(
-  id,
-  title,
-  category,
-  priority,
-  completedStatus = false,
-) {
+export function addTodo(title, category, priority) {
   return {
     type: ADD,
     payload: {
-      id,
       title,
       category,
       priority,
-      completedStatus,
     },
   };
 }
