@@ -63,10 +63,11 @@ const App = () => {
           {/* Todo List */}
           <div className="px-4 sm:px-6 p-6 lg:px-12 space-y-6">
             {state.todos && state.todos.length > 0 ? (
-              state.todos.map((todo) => (
+              state.todos.map((todo, index) => (
                 <div
                   key={todo.id}
-                  className={`${todo.completedStatus ? "bg-slate-900/30" : "bg-slate-900 hover:bg-slate-900/60 hover:border-violet-600"} ${todo.completedStatus ? "border-slate-800" : todo.priority === "low" ? "border-green-500" : todo.priority === "medium" ? "border-yellow-600" : todo.priority === "high" ? "border-rose-600" : "border-slate-300"} p-3 sm:p-4 py-5 group border-l-4 hover:scale-[1.02] shadow-[0_8px_8px_-6px] shadow-slate-800/50 rounded-lg transform transition-all duration-200 ease-in-out`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className={`animate-slide-up ${todo.completedStatus ? "todo-item-done" : "todo-item"} ${todo.completedStatus ? "border-slate-800" : todo.priority === "low" ? "border-green-500" : todo.priority === "medium" ? "border-yellow-600" : todo.priority === "high" ? "border-rose-600" : "border-slate-300"} p-3 sm:p-4 py-5 group border-l-4 hover:scale-[1.02] shadow-[0_8px_8px_-6px] shadow-slate-800/50 rounded-lg`}
                 >
                   <div className="flex gap-2">
                     <div
@@ -88,7 +89,7 @@ const App = () => {
                         type="checkbox"
                         name="completed"
                         checked={todo.completedStatus}
-                        className="cursor-pointer accent-purple-600 border border-purple-300"
+                        className="checkbox"
                         onChange={() => handleCheck(todo.id)}
                       />
                       <p
