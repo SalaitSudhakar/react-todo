@@ -82,7 +82,7 @@
 
   /* ── Custom checkbox ───────────────────────── */
   .checkbox {
-    @apply appearance-none w-5 h-5 rounded-lg border-2 border-slate-500 cursor-pointer relative flex-shrink-0;
+    @apply appearance-none w-5 h-5 rounded-full border-2 border-slate-500 cursor-pointer relative flex-shrink-0;
     transition: all 0.2s ease;
   }
 
@@ -92,19 +92,21 @@
   }
 
   .checkbox:checked {
-    @apply bg-violet-600 border-violet-600;
+    @apply border-purple-600;
   }
 
   .checkbox:checked::after {
     content: "";
     position: absolute;
-    left: 5px;
-    top: 2px;
-    width: 5px;
-    height: 9px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
+    left: 50%;
+    top: -5px;
+    width: 8px;
+    height: 16px;
+    border: solid;
+    border-width: 0 3px 3px 0;
     transform: rotate(45deg);
+
+    @apply border-purple-600
   }
 }
 
