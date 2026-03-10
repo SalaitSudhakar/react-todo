@@ -50,7 +50,7 @@ const App = () => {
           <div className="flex justify-between items-center border-b border-b-slate-500 shadow-[0px_2px_6px_rgba(139,92,246,0.3)] px-4 py-6 rounded-t-xl">
             <h4 className="heading-violet-200 font-bold text-2xl">Todos</h4>
             <button
-              className="btn bg-linear-to-r from-violet-600 to-purple-700 text-white purple-btn-glow border border-purple-600"
+              className="btn bg-linear-to-r from-violet-600 to-purple-700 text-white border border-purple-600"
               onClick={() => {
                 setEditTodo(null);
                 setOpenModal(true);
@@ -66,17 +66,17 @@ const App = () => {
               state.todos.map((todo, index) => (
                 <div
                   key={todo.id}
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  style={{ animationDelay: `${index * 0.2}s` }}
                   className={`animate-slide-up ${todo.completedStatus ? "todo-item-done" : "todo-item"} ${todo.completedStatus ? "border-slate-800" : todo.priority === "low" ? "border-green-500" : todo.priority === "medium" ? "border-yellow-600" : todo.priority === "high" ? "border-rose-600" : "border-slate-300"} p-3 sm:p-4 py-5 group border-l-4 hover:scale-[1.02] shadow-[0_8px_8px_-6px] shadow-slate-800/50 rounded-lg`}
                 >
                   <div className="flex gap-2">
                     <div
-                      className={`text-[8px] sm:text-[10px] p-1 rounded-full ${todo.completedStatus ? "text-slate-800 bg-slate-950/20 border border-slate-800" : "bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/30"}  `}
+                      className={`text-[8px] sm:text-[10px] p-1 rounded-lg ${todo.completedStatus ? "text-slate-800 bg-slate-950/20 border border-slate-800" : "bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/30"}  `}
                     >
                       {todo.category}
                     </div>
                     <div
-                      className={`text-[8px] sm:text-[10px] p-1 rounded-full  ${todo.completedStatus ? "text-slate-800 bg-slate-950/20 border border-slate-800" : todo.priority === "low" ? "badge-low" : todo.priority === "medium" ? "badge-medium" : "badge-high"}`}
+                      className={`text-[8px] sm:text-[10px] p-1 rounded-md  ${todo.completedStatus ? "text-slate-800 bg-slate-950/20 border border-slate-800" : todo.priority === "low" ? "badge-low" : todo.priority === "medium" ? "badge-medium" : "badge-high"}`}
                     >
                       {todo.priority}
                     </div>

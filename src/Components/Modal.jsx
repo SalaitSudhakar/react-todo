@@ -15,7 +15,8 @@ const Modal = ({ title, onCloseModal, children }) => {
           <h6 className="text-xl sm:text-2xl">{title}</h6>
           <button
             onClick={() => onCloseModal(false)}
-            className="font-medium text-slate-200 rounded-full p-1.5 bg-rose-600  hover:scale-90  cursor-pointer hover:shadow-md shadow-slate-200 translate-all ease-in-out duration-200"
+            title="close"
+            className="font-medium text-slate-200 rounded-full p-1.5 bg-rose-600  hover:-translate-y-0.5 hover:bg-rose-700 hover:text-slate-100  cursor-pointer translate-all ease-in-out duration-200"
           >
             <LuX className="size-5 sm:size-6" />
           </button>

@@ -6,7 +6,6 @@
 }
 
 @layer base {
-
   h1,
   h4,
   h6 {
@@ -45,12 +44,11 @@
     /* Forces it to stay purple-600 even when hovered */
     background: theme(--color-purple-600);
   }
-
 }
 
 @layer components {
   .btn {
-    @apply rounded-lg px-4 sm:px-6 py-2 hover:scale-90 cursor-pointer hover:shadow-md shadow-slate-200 transition-all ease-in-out duration-200;
+    @apply rounded-lg px-4 sm:px-6 py-2  hover:-translate-y-0.5 cursor-pointer  transition-all ease-in-out duration-200;
   }
 
   .badge-low {
@@ -92,7 +90,7 @@
   }
 
   .checkbox:checked {
-    @apply border-purple-600;
+    @apply border-purple-600 border-2;
   }
 
   .checkbox:checked::after {
@@ -105,8 +103,9 @@
     border: solid;
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
-
-    @apply border-purple-600
+    opacity: 0;
+    animation: checkboxTick 0.18s ease-out forwards;
+    @apply border-slate-300;
   }
 }
 
@@ -179,5 +178,16 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes checkboxTick {
+  from {
+    opacity: 0;
+    transform: rotate(45deg) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
   }
 }

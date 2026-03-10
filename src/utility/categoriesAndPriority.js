@@ -43,7 +43,7 @@ export const PRIORITIES = [
     label: "Low",
     value: "low",
     uncheckedStyle:
-      "bg-green-500/15 border-green-500/40 text-green-300 hover:bg-green-500/10 hover:border-green-500/50 hover:text-green-200",
+      "bg-green-500/15 border-green-500/40 text-green-300 hover:bg-green-400/10 hover:border-green-400/50 hover:text-green-200",
     dot: "bg-green-500",
     checkedStyle: "bg-green-500 border-green-400 text-white",
   },
@@ -51,7 +51,7 @@ export const PRIORITIES = [
     label: "Medium",
     value: "medium",
     uncheckedStyle:
-      "bg-yellow-500/15 border-yellow-500/40 text-yellow-300 hover:bg-yellow-500/10 hover:border-yellow-500/50 hover:text-yellow-200",
+      "bg-yellow-400/15 border-yellow-400/40 text-yellow-300 hover:bg-yellow-500/10 hover:border-yellow-500/50 hover:text-yellow-200",
     dot: "bg-yellow-500",
     // checked state — full solid color for the button box
     checkedStyle: "bg-yellow-500 border-yellow-400 text-black",

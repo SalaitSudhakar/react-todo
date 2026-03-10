@@ -161,7 +161,7 @@ const AddTaskModal = ({ onCloseModal, title, onAddTask }) => {
             <button
               type="button"
               onClick={handleCloseModal}
-              className="btn text-slate-300 border border-slate-700 shadow-none"
+              className="btn text-slate-600 border border-slate-900 hover:text-slate-400 hover:border-slate-700"
             >
               close
             </button>
