@@ -1,9 +1,143 @@
-import React from 'react'
+import React, { useEffect, useReducer, useState } from "react";
+import AddTaskModal from "./Components/AddTaskModal";
+import useLocalStorage from "./hooks/useLocalStorage";
+import todoReducer from "./reducer/todoReducer";
+import { LuPen, LuTrash } from "react-icons/lu";
+import { removeTodo, toggleTodo } from "./reducer/todoActions";
 
 const App = () => {
-  return (
-    <div >App</div>
-  )
-}
+  const [openModal, setOpenModal] = useState(false);
+  const [editTodo, setEditTodo] = useState(null);
 
-export default App
+  const { getData, storeData } = useLocalStorage("todo");
+
+  // Lazy initialization of initial sate
+  const [state, dispatch] = useReducer(todoReducer, null, () => {
+    const data = getData(); // This data required to set the initial state from local storage that survives page reload
+
+    return {
+      todos: data?.todos || [],
+      nextId: data?.nextId || 1,
+    };
+  });
+
+  useEffect(() => {
+    storeData(state);
+  }, [state, storeData]);
+
+  const handleCheck = (id) => {
+    dispatch(toggleTodo(id));
+  };
+
+  const handleEdit = (id) => {
+    const todoToEdit = state.todos.find((todo) => todo.id === id);
+    setEditTodo(todoToEdit);
+    setOpenModal(true);
+  };
+
+  const handleDelete = (id) => {
+    dispatch(removeTodo(id));
+  };
+
+  return (
+    <div className="">
+      <h1 className="text-shadow-sm text-shadow-slate-200 text-5xl text-center mb-12 mt-6">
+        Todo Flow
+      </h1>
+
+      <div className="w-full">
+        <div className="bg-slate-950 rounded-xl  border border-purple-700 max-w-11/12 sm:max-w-9/12 lg:max-w-1/2 mx-auto pb-6">
+          <div className="flex justify-between items-center border-b border-b-slate-500 shadow-[0px_2px_6px_rgba(139,92,246,0.3)] px-4 py-6 rounded-t-xl">
+            <h4 className="heading-violet-200 font-bold text-2xl">Todos</h4>
+            <button
+              className="btn bg-linear-to-r from-violet-600 to-purple-700 text-white purple-btn-glow border border-purple-600"
+              onClick={() => {
+                setEditTodo(null);
+                setOpenModal(true);
+              }}
+            >
+              New Task
+            </button>
+          </div>
+
+          {/* Todo List */}
+          <div className="px-4 sm:px-6 p-6 lg:px-12 space-y-6">
+            {state.todos && state.todos.length > 0 ? (
+              state.todos.map((todo) => (
+                <div
+                  key={todo.id}
+                  className={`${todo.completedStatus ? "bg-slate-900/30" : "bg-slate-900 hover:bg-slate-900/60 hover:border-violet-600"} ${todo.completedStatus ? "border-slate-800" : todo.priority === "low" ? "border-green-500" : todo.priority === "medium" ? "border-yellow-600" : todo.priority === "high" ? "border-rose-600" : "border-slate-300"} p-3 sm:p-4 py-5 group border-l-4 hover:scale-[1.02] shadow-[0_8px_8px_-6px] shadow-slate-800/50 rounded-lg transform transition-all duration-200 ease-in-out`}
+                >
+                  <div className="flex gap-2">
+                    <div
+                      className={`text-[8px] sm:text-[10px] p-1 rounded-full ${todo.completedStatus ? "text-slate-800 bg-slate-950/20 border border-slate-800" : "bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/30"}  `}
+                    >
+                      {todo.category}
+                    </div>
+                    <div
+                      className={`text-[8px] sm:text-[10px] p-1 rounded-full  ${todo.completedStatus ? "text-slate-800 bg-slate-950/20 border border-slate-800" : todo.priority === "low" ? "badge-low" : todo.priority === "medium" ? "badge-medium" : "badge-high"}`}
+                    >
+                      {todo.priority}
+                    </div>
+                  </div>
+
+                  {/* Bottom content */}
+                  <div className="flex justify-between items-center mt-2">
+                    <div className="flex gap-2 items-center justify-between">
+                      <input
+                        type="checkbox"
+                        name="completed"
+                        checked={todo.completedStatus}
+                        className="cursor-pointer accent-purple-600 border border-purple-300"
+                        onChange={() => handleCheck(todo.id)}
+                      />
+                      <p
+                        className={`${todo.completedStatus ? "line-through text-slate-500" : "text-slate-100"} text-sm sm:text-base font-medium`}
+                      >
+                        {todo.title}
+                      </p>
+                    </div>
+
+                    {/* right side action buttons */}
+                    <div className="space-x-4 ">
+                      <button
+                        disabled={todo.completedStatus}
+                        onClick={() => handleEdit(todo.id)}
+                        className={`not-disabled:cursor-pointer ${todo.completedStatus ? "text-slate-800 bg-transparent" : "shadow-md shadow-slate-700 hover:shadow-slate-600 text-indigo-300 hover:text-indigo-200 hover:scale-[1.1] "} transition-all duration-150 ease-in-out p-1.5 sm:p-2 lg:p-2.5 rounded-full `}
+                      >
+                        <LuPen className="size-4" />
+                      </button>
+                      <button
+                        disabled={todo.completedStatus}
+                        onClick={() => handleDelete(todo.id)}
+                        className={`not-disabled:cursor-pointer ${todo.completedStatus ? "text-slate-800" : "shadow-md shadow-slate-700 text-pink-500 group-hover:shadow-slate-600  hover:scale-[1.1]"} transition-all duration-150 ease-in-out p-1.5 sm:p-2 lg:p-2.5 rounded-full`}
+                      >
+                        <LuTrash className="size-4 " />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="text-slate-500 text-center min-h-52">
+                No Tasks Available
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Modal */}
+      {openModal && (
+        <AddTaskModal
+          title={"Add Task"}
+          onCloseModal={setOpenModal}
+          onAddTask={dispatch}
+          editingTodo={editTodo}
+        />
+      )}
+    </div>
+  );
+};
+
+export default App;
