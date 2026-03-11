@@ -48,16 +48,18 @@ const App = () => {
   };
 
   return (
-    <div className="">
+    <div className="mb-5">
       <header className="my-12 text-center">
-        <h1 className="text-shadow-sm text-shadow-slate-200 text-3xl sm:text-5xl flex justify-center items-center align-top gap-3">
+        <h1 className="animate-slide-left text-shadow-sm text-shadow-slate-200 text-3xl sm:text-5xl flex justify-center items-center align-top gap-3">
           <LuListTodo className="size-10 sm:size-14 align-text-top text-slate-300 rounded-full bg-linear-to-br from-indigo-900 via-purple-900 to-violet-900 p-2" />
           <span>Todo Flow</span>
         </h1>
-        <p className="mt-3 text-slate-400">Organize your daily tasks</p>
+        <p className="animate-slide-up mt-3 text-slate-400">
+          Organize your daily tasks
+        </p>
       </header>
 
-      <div className="w-full">
+      <div className="w-full animate-slide-down">
         <div className="bg-slate-950 rounded-xl  border border-purple-700 max-w-11/12 sm:max-w-9/12 lg:max-w-1/2 mx-auto pb-6">
           <div className="flex justify-between items-center border-b border-b-slate-500 shadow-[0px_2px_6px_rgba(139,92,246,0.3)] px-4 py-6 rounded-t-xl">
             <div className="flex items-center gap-2 justify-center">
@@ -79,7 +81,7 @@ const App = () => {
           </div>
 
           {/* Todo List */}
-          <div className="px-4 sm:px-6 p-6 lg:px-12 space-y-6">
+          <div className="px-4 sm:px-6 p-6 lg:px-12 space-y-6 animate-panel-in">
             {state.todos && state.todos.length > 0 ? (
               state.todos.map((todo, index) => (
                 <div
@@ -123,7 +125,7 @@ const App = () => {
                         disabled={todo.completedStatus}
                         onClick={() => handleEdit(todo.id)}
                         title="Edit"
-                        className={`animate-slide-right not-disabled:cursor-pointer opacity-0 ${todo.completedStatus ? "text-slate-800 bg-transparent " : "translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ease-out  shadow-md shadow-slate-700 hover:shadow-slate-600 text-indigo-300 hover:text-indigo-200 hover:scale-[1.1] "} transition-all duration-150 ease-in-out p-1.5 sm:p-2 lg:p-2.5 rounded-full `}
+                        className={` not-disabled:cursor-pointer opacity-0 ${todo.completedStatus ? "text-slate-800 bg-transparent " : "translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ease-out  shadow-md shadow-slate-700 hover:shadow-slate-600 text-indigo-300 hover:text-indigo-200 hover:scale-[1.1] "} transition-all duration-150 ease-in-out p-1.5 sm:p-2 lg:p-2.5 rounded-full `}
                       >
                         <LuPen className="size-4" />
                       </button>
@@ -131,7 +133,7 @@ const App = () => {
                         disabled={todo.completedStatus}
                         onClick={() => handleDelete(todo.id)}
                         title="Delete"
-                        className={`animate-slide-left  not-disabled:cursor-pointer opacity-0 ${todo.completedStatus ? "text-slate-800" : "-translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ease-out shadow-md shadow-slate-700 text-pink-500 group-hover:shadow-slate-600  hover:scale-[1.1]"} transition-all duration-150 ease-in-out p-1.5 sm:p-2 lg:p-2.5 rounded-full`}
+                        className={` not-disabled:cursor-pointer opacity-0 ${todo.completedStatus ? "text-slate-800" : "-translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ease-out shadow-md shadow-slate-700 text-pink-500 group-hover:shadow-slate-600  hover:scale-[1.1]"} transition-all duration-150 ease-in-out p-1.5 sm:p-2 lg:p-2.5 rounded-full`}
                       >
                         <LuTrash className="size-4 " />
                       </button>
@@ -162,7 +164,7 @@ const App = () => {
       </div>
 
       {/* Footer */}
-      <footer className="text-center text-xs text-slate-300 mt-6 font-medium">
+      <footer className="text-center text-xs text-slate-300 mt-6 font-medium animate-slide-up">
         Built with ❤️ using React
       </footer>
 
