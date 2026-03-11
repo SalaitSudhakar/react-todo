@@ -113,7 +113,7 @@ const AddTaskModal = ({ onCloseModal, title, onAddTask, editingTodo }) => {
                 ${
                   selectedCategory
                     ? selectedCategory.style
-                    : "bg-slate-950 hover:bg-slate-950/80"
+                    : "bg-slate-950 hover:bg-slate-950/95"
                 }
                 `}
             >
