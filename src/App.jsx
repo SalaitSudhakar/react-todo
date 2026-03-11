@@ -2,9 +2,16 @@ import React, { useEffect, useReducer, useState } from "react";
 import AddTaskModal from "./Components/AddTaskModal";
 import useLocalStorage from "./hooks/useLocalStorage";
 import todoReducer from "./reducer/todoReducer";
-import { LuCircleDashed, LuPen, LuTrash } from "react-icons/lu";
+import {
+  LuCircleDashed,
+  LuListTodo,
+  LuPen,
+  LuPlus,
+  LuTrash,
+} from "react-icons/lu";
 import { removeTodo, toggleTodo } from "./reducer/todoActions";
 import { MdOutlineAssignmentLate } from "react-icons/md";
+import { CiCircleList } from "react-icons/ci";
 
 const App = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -42,22 +49,32 @@ const App = () => {
 
   return (
     <div className="">
-      <h1 className="text-shadow-sm text-shadow-slate-200 text-5xl text-center mb-12 mt-6">
-        Todo Flow
-      </h1>
+      <div className="my-12 text-center">
+        <h1 className="text-shadow-sm text-shadow-slate-200 text-3xl sm:text-5xl flex justify-center items-center align-top gap-3">
+          <LuListTodo className="size-10 sm:size-14 align-text-top text-slate-300 rounded-full bg-linear-to-br from-indigo-900 via-purple-900 to-violet-900 p-2" />
+          <span>Todo Flow</span>
+        </h1>
+        <p className="mt-3 text-slate-400">Organize your daily tasks</p>
+      </div>
 
       <div className="w-full">
         <div className="bg-slate-950 rounded-xl  border border-purple-700 max-w-11/12 sm:max-w-9/12 lg:max-w-1/2 mx-auto pb-6">
           <div className="flex justify-between items-center border-b border-b-slate-500 shadow-[0px_2px_6px_rgba(139,92,246,0.3)] px-4 py-6 rounded-t-xl">
-            <h4 className="heading-violet-200 font-bold text-2xl">Todos</h4>
+            <div className="flex items-center gap-2 justify-center">
+              <CiCircleList className="size-5 sm:size-6" />
+              <h4 className="heading-violet-200 font-bold text-xl sm:text-2xl">
+                Todos
+              </h4>
+            </div>
             <button
-              className="btn bg-linear-to-r from-violet-600 to-purple-700 text-white border border-purple-600"
+              className="btn bg-linear-to-r from-violet-600 to-purple-700 group text-white border border-purple-600 flex justify-center items-center gap-1.5"
               onClick={() => {
                 setEditTodo(null);
                 setOpenModal(true);
               }}
             >
-              New Task
+              <LuPlus className="size-3 sm:size-4 group-hover:rotate-90 transition-all duration-200 ease-in" />
+              Add Task
             </button>
           </div>
 
@@ -121,12 +138,12 @@ const App = () => {
                 </div>
               ))
             ) : (
-              <div className=" min-h-52 text-center translate-y-15 text-slate-700 space-y-4">
+              <div className=" min-h-52 text-center translate-y-15 text-slate-700 space-y-5 text-sm sm:text-base">
                 <div className="flex flex-col items-center justify-center">
-                  <MdOutlineAssignmentLate className="size-12 text-violet-500" />
+                  <MdOutlineAssignmentLate className="size-10 sm:size-12 text-violet-500" />
                 </div>
 
-                <p className="text-lg font-semibold  mb-1.5">
+                <p className="text-md sm:text-lg font-semibold  mb-1.5">
                   No tasks yet
                 </p>
                 <p className="text-sm text-slate-400">
