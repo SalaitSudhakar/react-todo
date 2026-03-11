@@ -1,14 +1,16 @@
 import React, { Fragment, useState } from "react";
 import Modal from "./Modal";
 import { CATEGORIES, PRIORITIES } from "../utility/categoriesAndPriority";
-import { addTodo } from "../reducer/todoActions";
+import { addTodo, editTodo } from "../reducer/todoActions";
 
-const AddTaskModal = ({ onCloseModal, title, onAddTask }) => {
+const AddTaskModal = ({ onCloseModal, title, onAddTask, editingTodo }) => {
   const [formData, setFormData] = useState({
-    name: "",
-    category: "",
-    priority: "low",
+    name: editingTodo?.title || "",
+    category: editingTodo?.category || "",
+    priority: editingTodo?.priority || "low",
   });
+
+  const editTodoOperation = editingTodo !== null;
 
   const handleTaskName = (e) => {
     setFormData((prev) => ({
@@ -45,14 +47,19 @@ const AddTaskModal = ({ onCloseModal, title, onAddTask }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Dispatch for reducer to add Todo (received from parent through props)
-    onAddTask(
-      addTodo(
-        formData.name,
-        formData.category,
-        formData.priority,
-      ),
-    );
+    if (editTodoOperation) {
+      onAddTask(
+        editTodo(
+          editingTodo.id,
+          formData.name,
+          formData.category,
+          formData.priority,
+        ),
+      );
+    } else {
+      // Dispatch for reducer to add Todo (received from parent through props)
+      onAddTask(addTodo(formData.name, formData.category, formData.priority));
+    }
 
     // reset form
     setFormData({
@@ -62,7 +69,7 @@ const AddTaskModal = ({ onCloseModal, title, onAddTask }) => {
     });
 
     // close Modal
-    onCloseModal(false)
+    onCloseModal(false);
   };
 
   return (
@@ -169,7 +176,7 @@ const AddTaskModal = ({ onCloseModal, title, onAddTask }) => {
               type="submit"
               className="btn bg-linear-to-r from-violet-600 to-purple-700 text-white "
             >
-              Add
+              {editTodoOperation ? "Update" : "Add"}
             </button>
           </div>
         </form>
