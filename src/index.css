@@ -14,7 +14,7 @@
 
   body {
     font-family: var(--font-poppins), sans-serif;
-    @apply bg-linear-to-br from-indigo-900 via-purple-900 to-violet-900 text-slate-300;
+    @apply bg-linear-to-br from-indigo-900 via-purple-900 to-violet-900 text-slate-300 min-h-screen;
   }
 
   /* Custom Scrollbar Styles */
