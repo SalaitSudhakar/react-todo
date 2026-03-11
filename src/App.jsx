@@ -85,7 +85,7 @@ const App = () => {
                 <div
                   key={todo.id}
                   style={{ animationDelay: `${index * 0.2}s` }}
-                  className={`animate-slide-up ${todo.completedStatus ? "todo-item-done" : "todo-item"} ${todo.completedStatus ? "border-slate-800" : todo.priority === "low" ? "border-green-500" : todo.priority === "medium" ? "border-yellow-600" : todo.priority === "high" ? "border-rose-600" : "border-slate-300"} p-3 sm:p-4 py-5 group border-l-4 hover:scale-[1.02] shadow-[0_8px_8px_-6px] shadow-slate-800/50 rounded-lg`}
+                  className={`group animate-slide-up ${todo.completedStatus ? "todo-item-done" : "todo-item"} ${todo.completedStatus ? "border-slate-800" : todo.priority === "low" ? "border-green-500" : todo.priority === "medium" ? "border-yellow-600" : todo.priority === "high" ? "border-rose-600" : "border-slate-300"} p-3 sm:p-4 py-5 group border-l-4 hover:scale-[1.02] shadow-[0_8px_8px_-6px] shadow-slate-800/50 rounded-lg`}
                 >
                   <div className="flex gap-2">
                     <div
@@ -118,18 +118,20 @@ const App = () => {
                     </div>
 
                     {/* right side action buttons */}
-                    <div className="space-x-4 ">
+                    <div className="space-x-2">
                       <button
                         disabled={todo.completedStatus}
                         onClick={() => handleEdit(todo.id)}
-                        className={`not-disabled:cursor-pointer ${todo.completedStatus ? "text-slate-800 bg-transparent" : "shadow-md shadow-slate-700 hover:shadow-slate-600 text-indigo-300 hover:text-indigo-200 hover:scale-[1.1] "} transition-all duration-150 ease-in-out p-1.5 sm:p-2 lg:p-2.5 rounded-full `}
+                        title="Edit"
+                        className={`animate-slide-right not-disabled:cursor-pointer opacity-0 ${todo.completedStatus ? "text-slate-800 bg-transparent " : "translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ease-out  shadow-md shadow-slate-700 hover:shadow-slate-600 text-indigo-300 hover:text-indigo-200 hover:scale-[1.1] "} transition-all duration-150 ease-in-out p-1.5 sm:p-2 lg:p-2.5 rounded-full `}
                       >
                         <LuPen className="size-4" />
                       </button>
                       <button
                         disabled={todo.completedStatus}
                         onClick={() => handleDelete(todo.id)}
-                        className={`not-disabled:cursor-pointer ${todo.completedStatus ? "text-slate-800" : "shadow-md shadow-slate-700 text-pink-500 group-hover:shadow-slate-600  hover:scale-[1.1]"} transition-all duration-150 ease-in-out p-1.5 sm:p-2 lg:p-2.5 rounded-full`}
+                        title="Delete"
+                        className={`animate-slide-left  not-disabled:cursor-pointer opacity-0 ${todo.completedStatus ? "text-slate-800" : "-translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ease-out shadow-md shadow-slate-700 text-pink-500 group-hover:shadow-slate-600  hover:scale-[1.1]"} transition-all duration-150 ease-in-out p-1.5 sm:p-2 lg:p-2.5 rounded-full`}
                       >
                         <LuTrash className="size-4 " />
                       </button>

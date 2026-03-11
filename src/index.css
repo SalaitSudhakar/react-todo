@@ -136,26 +136,6 @@
   }
 }
 
-@keyframes blurIn {
-  0% {
-    opacity: 0;
-    filter: blur(8px);
-    transform: scale(0.96);
-  }
-
-  50% {
-    opacity: 0.5;
-    filter: blur(4px);
-    transform: scale(0.98);
-  }
-
-  100% {
-    opacity: 1;
-    filter: blur(0px);
-    transform: scale(1);
-  }
-}
-
 @keyframes popIn {
   0% {
     opacity: 0;
