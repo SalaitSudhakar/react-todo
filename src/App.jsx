@@ -49,13 +49,13 @@ const App = () => {
 
   return (
     <div className="">
-      <div className="my-12 text-center">
+      <header className="my-12 text-center">
         <h1 className="text-shadow-sm text-shadow-slate-200 text-3xl sm:text-5xl flex justify-center items-center align-top gap-3">
           <LuListTodo className="size-10 sm:size-14 align-text-top text-slate-300 rounded-full bg-linear-to-br from-indigo-900 via-purple-900 to-violet-900 p-2" />
           <span>Todo Flow</span>
         </h1>
         <p className="mt-3 text-slate-400">Organize your daily tasks</p>
-      </div>
+      </header>
 
       <div className="w-full">
         <div className="bg-slate-950 rounded-xl  border border-purple-700 max-w-11/12 sm:max-w-9/12 lg:max-w-1/2 mx-auto pb-6">
@@ -160,9 +160,9 @@ const App = () => {
       </div>
 
       {/* Footer */}
-      <p className="text-center text-xs text-slate-300 mt-6 font-medium">
+      <footer className="text-center text-xs text-slate-300 mt-6 font-medium">
         Built with ❤️ using React
-      </p>
+      </footer>
 
       {/* Modal */}
       {openModal && (
