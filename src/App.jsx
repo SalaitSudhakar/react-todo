@@ -2,8 +2,9 @@ import React, { useEffect, useReducer, useState } from "react";
 import AddTaskModal from "./Components/AddTaskModal";
 import useLocalStorage from "./hooks/useLocalStorage";
 import todoReducer from "./reducer/todoReducer";
-import { LuPen, LuTrash } from "react-icons/lu";
+import { LuCircleDashed, LuPen, LuTrash } from "react-icons/lu";
 import { removeTodo, toggleTodo } from "./reducer/todoActions";
+import { MdOutlineAssignmentLate } from "react-icons/md";
 
 const App = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -120,13 +121,31 @@ const App = () => {
                 </div>
               ))
             ) : (
-              <div className="text-slate-500 text-center min-h-52">
-                No Tasks Available
+              <div className=" min-h-52 text-center translate-y-15 text-slate-700 space-y-4">
+                <div className="flex flex-col items-center justify-center">
+                  <MdOutlineAssignmentLate className="size-12 text-violet-500" />
+                </div>
+
+                <p className="text-lg font-semibold  mb-1.5">
+                  No tasks yet
+                </p>
+                <p className="text-sm text-slate-400">
+                  Hit the{" "}
+                  <span className="text-violet-600 font-semibold">
+                    + Add Task
+                  </span>{" "}
+                  button to create your first task
+                </p>
               </div>
             )}
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <p className="text-center text-xs text-slate-300 mt-6 font-medium">
+        Built with ❤️ using React
+      </p>
 
       {/* Modal */}
       {openModal && (
