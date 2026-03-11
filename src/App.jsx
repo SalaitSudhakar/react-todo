@@ -23,6 +23,8 @@ const App = () => {
     };
   });
 
+  console.log("State: ", state.todos)
+
   useEffect(() => {
     storeData(state);
   }, [state, storeData]);
@@ -42,9 +44,11 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="pb-6 sm:pb-12">
       {/* header */}
-      <Header />
+      <Header 
+        todos={state.todos}
+      />
 
       {/* Todo Container */}
       <TodoContainer
