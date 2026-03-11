@@ -2,13 +2,7 @@ import React, { useEffect, useReducer, useState } from "react";
 import AddTaskModal from "./Components/AddTaskModal";
 import useLocalStorage from "./hooks/useLocalStorage";
 import todoReducer from "./reducer/todoReducer";
-import {
-  LuCircleDashed,
-  LuListTodo,
-  LuPen,
-  LuPlus,
-  LuTrash,
-} from "react-icons/lu";
+import { LuListTodo, LuPen, LuPlus, LuTrash } from "react-icons/lu";
 import { removeTodo, toggleTodo } from "./reducer/todoActions";
 import { MdOutlineAssignmentLate } from "react-icons/md";
 import { CiCircleList } from "react-icons/ci";

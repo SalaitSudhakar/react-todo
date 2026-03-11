@@ -122,21 +122,8 @@
     animation: popIn 0.2s ease-out forwards;
   }
 
-  .purple-btn-glow {
-    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.6);
-  }
-
-  .purple-btn-glow:hover {
-    box-shadow: 0 5px 8px rgba(255, 255, 255);
-  }
-
   .animate-slide-up {
     animation: slideUp 0.35s ease-out forwards;
-    opacity: 0;
-  }
-
-  .animate-slide-right {
-    animation: slideRight 0.35s ease-out forwards;
     opacity: 0;
   }
 
@@ -189,18 +176,6 @@
   100% {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes slideRight {
-  0% {
-    opacity: 0;
-    transform: translateX(-16px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0);
   }
 }
 
