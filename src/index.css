@@ -132,6 +132,11 @@
     opacity: 0;
   }
 
+  .animate-slide-right {
+    animation: slideRight 0.35s ease-out forwards;
+    opacity: 0;
+  }
+
   .animate-slide-down {
     animation: slideDown 0.5s ease-out forwards;
     opacity: 0;
@@ -191,6 +196,18 @@
   }
 }
 
+@keyframes slideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @keyframes checkboxTick {
   from {
     opacity: 0;
@@ -201,4 +218,3 @@
     transform: rotate(45deg) scale(1);
   }
 }
-
