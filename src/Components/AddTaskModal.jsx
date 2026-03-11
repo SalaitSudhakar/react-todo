@@ -91,7 +91,7 @@ const AddTaskModal = ({ onCloseModal, title, onAddTask, editingTodo }) => {
               onChange={handleTaskName}
               placeholder="Enter Your Task"
               required
-              className="w-full bg-slate-800 border border-slate-600 text-slate-200 focus:border-violet-300 focus:ring-violet-800 outline-0 px-3 py-1.5 rounded-md"
+              className="w-full bg-slate-800 border border-slate-600 text-slate-200 focus:border-violet-300 focus:ring-violet-800 outline-0 px-3 py-1.5 rounded-md hover:bg-slate-700/80 duration-100 transition-all"
             />
           </div>
 
@@ -109,11 +109,11 @@ const AddTaskModal = ({ onCloseModal, title, onAddTask, editingTodo }) => {
               value={formData.category}
               onChange={handleCategory}
               required
-              className={` border  outline-0 focus:border-violet-300 focus:ring-1 focus:ring-violet-800 text-slate-500 w-full px-3 py-1.5 rounded-md
+              className={` border  border-slate-600 outline-0 focus:border-violet-300 focus:ring-1 focus:ring-violet-800 text-slate-500 w-full px-3 py-1.5 rounded-md transition-all duration-100
                 ${
                   selectedCategory
                     ? selectedCategory.style
-                    : "bg-slate-950 border-slate-600"
+                    : "bg-slate-950 hover:bg-slate-950/80"
                 }
                 `}
             >

@@ -43,25 +43,25 @@ export const PRIORITIES = [
     label: "Low",
     value: "low",
     uncheckedStyle:
-      "bg-green-500/15 border-green-500/40 text-green-300 hover:bg-green-400/10 hover:border-green-400/50 hover:text-green-200",
-    dot: "bg-green-500",
-    checkedStyle: "bg-green-500 border-green-400 text-white",
+      "bg-emerald-500/5 border-emerald-500/40 text-emerald-300 hover:bg-emerald-400/10 hover:border-emerald-400/50 hover:text-emerald-200",
+    dot: "bg-emerald-500",
+    checkedStyle: "bg-emerald-700 border-emerald-700 text-white hover:bg-emerald-800 hover:border-emerald-800 hover:-translate-y-0.5",
   },
   {
     label: "Medium",
     value: "medium",
     uncheckedStyle:
-      "bg-yellow-400/15 border-yellow-400/40 text-yellow-300 hover:bg-yellow-500/10 hover:border-yellow-500/50 hover:text-yellow-200",
-    dot: "bg-yellow-500",
+      "bg-amber-400/5 border-amber-400/40 text-amber-300 hover:bg-amber-500/10 hover:border-amber-500/50 hover:text-amber-200",
+    dot: "bg-amber-500",
     // checked state — full solid color for the button box
-    checkedStyle: "bg-yellow-500 border-yellow-400 text-black",
+    checkedStyle: "bg-amber-500 border-amber-400 text-black hover:bg-amber-600 hover:border-amber-500 hover:-translate-y-0.5",
   },
   {
     label: "High",
     value: "high",
     uncheckedStyle:
-      "bg-pink-600/15 border-pink-600/40 text-pink-300 hover:bg-pink-600/10 hover:border-pink-600/50 hover:text-pink-200",
-    dot: "bg-pink-600",
-    checkedStyle: "bg-pink-600 border-pink-500 text-white",
+      "bg-rose-600/5 border-rose-600/40 text-rose-300 hover:bg-rose-600/10 hover:border-rose-600/50 hover:text-rose-200",
+    dot: "bg-rose-600",
+    checkedStyle: "bg-rose-600 border-rose-500 text-white hover:bg-rose-700 hover:border-rose-600 hover:-translate-y-0.5",
   },
 ];
