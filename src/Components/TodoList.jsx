@@ -4,13 +4,13 @@ import { LuPen, LuTrash } from "react-icons/lu";
 
 const TodoList = ({ handleCheck, handleEdit, handleDelete, state }) => {
   return (
-    <div className="px-4 sm:px-6 p-6 lg:px-12 space-y-6 animate-panel-in">
+    <div className="px-4 sm:px-6 p-6 lg:px-12 space-y-6 animate-panel-in ">
       {state.todos && state.todos.length > 0 ? (
         state.todos.map((todo, index) => (
           <div
             key={todo.id}
             style={{ animationDelay: `${index * 0.2}s` }}
-            className={`group animate-slide-up ${todo.completedStatus ? "todo-item-done" : "todo-item"} ${todo.completedStatus ? "border-slate-800" : todo.priority === "low" ? "border-green-500" : todo.priority === "medium" ? "border-yellow-600" : todo.priority === "high" ? "border-rose-600" : "border-slate-300"} p-3 sm:p-4 py-5 group border-l-4 hover:scale-[1.02] shadow-[0_8px_8px_-6px] shadow-slate-800/50 rounded-lg`}
+            className={`group animate-slide-up translate-all duration-200 ease-in-out ${todo.completedStatus ? "todo-item-done" : "todo-item"} ${todo.completedStatus ? "border-slate-800" : todo.priority === "low" ? "border-green-500" : todo.priority === "medium" ? "border-yellow-600" : todo.priority === "high" ? "border-rose-600" : "border-slate-300"} p-3 sm:p-4 py-5 group border-l-4 hover:scale-[1.02] shadow-[0_8px_8px_-6px] shadow-slate-800/50 rounded-lg`}
           >
             <div className="flex gap-2">
               <div
