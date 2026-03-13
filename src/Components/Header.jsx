@@ -4,18 +4,15 @@ import {
   calculateCompletedPercentage,
   totalTasksAndCompletedTasksLength,
 } from "../utility/calculatePercentage";
+import { TiTick } from "react-icons/ti";
 
 const Header = ({ todos }) => {
   const [totalTasks, completedTasks] = totalTasksAndCompletedTasksLength(todos);
-
-  console.log("CompletedTask in Header: ", completedTasks);
 
   const completedPercentage = calculateCompletedPercentage(
     totalTasks,
     completedTasks,
   );
-
-  console.log("CompletedTask Percentage in Header: ", completedPercentage);
 
   return (
     <header className="my-12">
@@ -29,13 +26,19 @@ const Header = ({ todos }) => {
         </p>
       </div>
 
-      <div className="animate-slide-right text-slate-500  gap-1.5 max-w-11/12 sm:max-w-9/12 lg:max-w-1/2 mx-auto">
-        <p className="block mt-12 mb-3 text-sm">
-          ({completedTasks || 0} / {totalTasks || 0}) Completed
+      <div className="animate-slide-right text-slate-400  gap-1.5 max-w-11/12 sm:max-w-9/12 lg:max-w-1/2 mx-auto">
+        <p className="mt-12 mb-3 text-sm flex gap-1 items-center">
+          <span>
+            ({completedTasks || 0} / {totalTasks || 0}) Completed
+          </span>
+
+          {completedPercentage === 100 && (
+            <TiTick className="size-6 animate-pop-in text-green-500  rounded-full" />
+          )}
         </p>
-        <div className="relative w-full h-2 bg-slate-400 rounded-full">
+        <div className="relative w-full h-2 bg-slate-400/45 rounded-full">
           <div
-            className={`h-[inherit] bg-linear-to-r bg-slate-950/90 rounded-full duration-300 transition-all ease-out`}
+            className={`h-[inherit] bg-linear-to-r from-rose-500 via-amber-500 to-teal-600  rounded-full duration-300 transition-all ease-out`}
             style={{ width: `${completedPercentage}%` }}
           ></div>
         </div>
